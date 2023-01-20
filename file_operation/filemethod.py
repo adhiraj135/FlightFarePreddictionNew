@@ -23,3 +23,10 @@ class file_op:
                return pickle.load(f)
         except Exception as e:
             raise e
+
+    def model_finder(self):
+        try:
+            for model in os.listdir(self.dir):
+                return model
+        except Exception as e:
+            raise e
