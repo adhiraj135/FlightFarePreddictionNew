@@ -6,6 +6,7 @@ from data_loading.data_loader_prediction import pred_loader
 from data_loading.data_loader import train_loader
 from file_operation.filemethod import file_op
 from data_prediction import prediction_model
+from data_training import training_model
 
 
 app = Flask(__name__)
@@ -38,7 +39,8 @@ def predict():
        prediction_data=pred.model_prediction()
        print(prediction_data)
        file=file_op()
-       model=file.model_loading(model_name='xgboost')
+       model_name=file.model_finder()
+       model=file.model_loading(model_name=model_name)
        price=model.predict(prediction_data)
 
        return render_template('index.html', result_text="The Flight Price is {}".format(price[0]))
@@ -46,7 +48,17 @@ def predict():
     except Exception as e:
         print("exception ocurred %s" %e)
 
+@app.route("/predict", methods=['POST'])
+@cross_origin()
+def train():
+    try:
+        train=training_model()
+        train.model_training()
 
+        return render_template('index.html', result="Traininig of model is a success")
+
+    except Exception as e:
+        raise e
 
 
 if __name__ == "__main__":
