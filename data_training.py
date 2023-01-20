@@ -35,7 +35,6 @@ class training_model:
         x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=36, test_size=1 / 3)
         model_name, model = self.model.best_model(x_train=x_train, x_test=x_test, y_train=y_train, y_test=y_test)
         self.file.model_saving(model_name, model)
-        return model_name
 
 
 if __name__=="__main__":
