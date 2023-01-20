@@ -20,10 +20,6 @@ class enocoder:
         pred_data.replace(list(pred_data[column])[0],dictionary[list(pred_data[column])[0]],inplace=True)
         return pred_data
 
-    def dict_data(self,train_data,column):
-        values=train_data.groupby([column])['Price'].mean().sort_values().index
-        dictionary={key:value for value,key in enumerate(values)}
-        return dictionary
 
     def source_column_addition(self,train_data,pred_data):
         column=train_data.drop(columns='Price',axis=1)
