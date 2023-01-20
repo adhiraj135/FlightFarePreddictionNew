@@ -58,11 +58,13 @@ class model_selection:
            random_forest_reg=self.best_param_for_random_forest(x=x_train,y=y_train)
            prediction_random=random_forest_reg.predict(x_test)
            random_score=r2_score(y_test,prediction_random)
+           print(random_score)
 
 
            xgb_reg=self.get_param_for_xgboost(x=x_train,y=y_train)
            prediction_xgb=xgb_reg.predict(x_test)
            xgb_score=r2_score(y_test,prediction_xgb)
+           print(xgb_score)
 
            if random_score<xgb_score:
                return 'xgboost',xgb_reg
