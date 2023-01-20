@@ -14,7 +14,7 @@
 
 <body>
  <div class="login">
-	<h1>Flight Price Prediction</h1>
+	<h1>Flight Fare Prediction</h1>
       <form action="{{ url_for('predict')}}"method="post">
         <label for="Airlines">Choose a Airline:</label>
           <select id="Airlines" name="Airlines">
@@ -46,8 +46,9 @@
              <option value="Mumbai">Mumbai</option>
              <option value="Kolkata">Kolkata</option>
              <option value="Banglore">Banglore</option>
-              <option value="Chennai">Chennai</option>
-               <option value="New Delhi">New Delhi</option>
+              <option value="Cochin">Cochin</option>
+              <option value="New Delhi">New Delhi</option>
+              <option value="Hyderabad">Hyderabad</option>
          </select> <br>
           <input type="text" name="Route" placeholder="route" required="required" /><br>
           <input type="time" name="dep time" placeholder="dep_time" required="required" /><br>
@@ -82,6 +83,18 @@
 
  </div>
  {{result_text}}
+ <div class="login">
+    <h1> Flight Fare Training</h1>
+      <form action="{{ url_for('train')}}"method="post">
+          <button type="submit" class="btn btn-primary btn-block btn-large">Train</button>
+
+      </form>
+
+    <br>
+    <br>
+
+ </div>
+ {{result}}
 
 </body>
 </html>
